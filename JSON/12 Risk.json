@@ -1,0 +1,51 @@
+{
+  "Flight Information": {
+    "Date": "2022-06-28",
+    "Release/Trip #": 18934,
+    "Tail #": "B02G46",
+    "Departure": "CDG",
+    "Destination": "BHD"
+  },
+  "Pilot Qualifications and Experience": {
+    "Captain with less than 200 hours in type": 0,
+    "First Officer with less than 200 hours in type": 0,
+    "Single Pilot Flight": 0,
+    "Captain with less than 100 hours last 90 days": 0,
+    "Duty day greater than 12 hours": 3,
+    "Flight time (Greater than 8 hours in the duty day)": 0,
+    "Crew Rest (Less than 10 hours prior to the duty day)": 0
+  },
+  "Operating Environment": {
+    "VOR/GPS/LOC/ADF (Best approach available w/o vertical guidance)": 0,
+    "Circling approach (best available approach)": 0,
+    "No published approaches": 0,
+    "Mountainous airport": 0,
+    "Control tower not operational at ETA or ETD": 2,
+    "Uncontrolled airport": 0,
+    "Alternate airport not selected": 0,
+    "Elevation of primary airport greater than 5000 ft. MSL)": 2,
+    "Wet runway": 0,
+    "Contaminated runway": 0,
+    "Winter operation": 2,
+    "Twilight operation": 0,
+    "Night operation": 0,
+    "Stopping distance greater than 80% of available runway": 0,
+    "Repositioning flight (no passengers or cargo)": 0,
+    "Pop up trip (Less than 4 hours crew notice)": 0,
+    "No weather reporting at destination": 0,
+    "Thunderstorms at departure and/or destination": 0,
+    "Severe turbulence": 0,
+    "Ceiling & visibility at destination less than 500 ft. / 2 sm": 0,
+    "Heavy rain at departure and/or destination": 0,
+    "Frozen precipitation at departure and/or destination": 0,
+    "Icing (moderate-severe)": 0,
+    "Surface winds greater than 30 knots": 2,
+    "Crosswinds greater than 15 knots": 1,
+    "Runway braking action less than good": 0
+  },
+  "Equipment": {
+    "Special Flight Permit Operation (ferry permit)": 0,
+    "MEL / CDL Items (items related to safety of flight)": 0,
+    "Special flight limitations based on AFM equipment limitations": 0
+  }
+}
