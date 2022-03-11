@@ -9,6 +9,7 @@ class Form():
         self.officerLessThan200 = request['officerLessThan200']
         self.singlePilot = request['singlePilot']
         self.capLess100in90 = request['capLess100in90']
+        self.offLess100in90 = request['offLess100in90']
         self.duty12Hours = request['duty12Hours']
         self.flightTime = request['flightTime']
         self.crewRest = request['crewRest']
@@ -141,6 +142,12 @@ class Form():
                 "descrip": "Captain with less than 100 hours last 90 days",
                 "maxVal": 3,
                 "inputVal": self.capLess100in90
+                },
+                {
+                "name": "OffLess100in90",
+                "descrip": "Officer with less than 100 hours in last 90 days",
+                "maxVal": 3,
+                "inputVal": self.offLess100in90
                 },
                 {
                 "name": "Duty12Hours",
