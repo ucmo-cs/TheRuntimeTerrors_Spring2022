@@ -39,9 +39,9 @@ class Form():
         self.ice = request['ice']
         self.surfaceWinds = request['surfaceWinds']
         self.crossWinds = request['crossWinds']
-        self.brakeAction = request['breakAction']
+        self.brakeAction = request['brakeAction']
         self.permit = request['permit']
-        self.safetyItems = request['saftyItems']
+        self.safetyItems = request['safetyItems']
         self.limitations = request['limitations']
 
     # @property

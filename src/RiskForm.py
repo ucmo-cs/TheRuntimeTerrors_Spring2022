@@ -1,4 +1,3 @@
-from ast import For
 import json
 import re
 from flask import Flask, request, jsonify
@@ -20,14 +19,16 @@ db = mySQL_Connector()
 
 class RiskForm(Resource):
     def post(self):
+        print(request)
         risk_form = Form(request.get_json())
-        if db.check_record(risk_form.tripNumber):
-            # check for changed fields
-            # do an update with changed fields
-            return risk_form.data, HTTPStatus.OK
-        else: 
-            # create new record
-            return risk_form.data, HTTPStatus.CREATED
+        # if db.check_record(risk_form.tripNumber):
+        #     # check for changed fields
+        #     # do an update with changed fields
+        #     return risk_form.data, HTTPStatus.OK
+        # else: 
+        #     # create new record
+        #     return risk_form.data, HTTPStatus.CREATED
+        return risk_form.data
 
     def get(self):
         return {'test': 'test'}
