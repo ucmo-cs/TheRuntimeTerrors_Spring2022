@@ -37,7 +37,7 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    @app.route('/post_json', methods=['POST'])
+    @app.route('/riskassessments', methods=['POST'])
     def process_json():
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
@@ -52,5 +52,13 @@ def create_app(test_config=None):
             return json2
         else:
             return 'Content-Type not supported!'
+
+    @app.route('/riskassessments/delete/<id>', methods=['DELETE'])
+    def delete_risk_assessment_by_id(id):
+        mycursor = mydb.cursor()
+        sql = "DELETE FROM RiskAssessments WHERE TripNumber=" + id
+        mycursor.execute(sql)
+        mydb.commit()
+        return make_response("", 204)
 
     return app
