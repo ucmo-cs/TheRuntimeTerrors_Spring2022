@@ -112,12 +112,13 @@ class Form():
         return {
             "FlightInformation": 
                 {
-                'date': self.flightDate,
-                'trip': self.tripNumber,
-                'tailNumber': self.tailNumber,
-                'departure': self.departure,
-                'destination': self.destination
+                "date": self.flightDate,
+                "trip": self.tripNumber,
+                "tailNumber": self.tailNumber,
+                "departure": self.departure,
+                "destination": self.destination
                 },
+               
             "PilotQualificationsAndExperience": [
                 {
                 "name": "CaptainLessThan200",
@@ -249,7 +250,7 @@ class Form():
                 },
                 {
                 "name": "StopDist",
-                "descrip": "Stopping distance greater than 80% of available runway",
+                "descrip": "Stopping distance greater than 80 percent of available runway",
                 "maxVal": 5,
                 "inputVal": self.stopDist
                 },

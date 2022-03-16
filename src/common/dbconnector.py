@@ -25,9 +25,25 @@ class mySQL_Connector:
     
     def get_all_db(self, query):
         self.cursor.execute(query)
-        display_info = self.cursor.fetchall()
+        #display_info = self.cursor.fetchall()
         self.cnx.commit()
         self.cnx.close()
-        return display_info
+        #return display_info
+
+
+    def check_record(self, tripNumber):
+        query = f"Select count(*) from risk where tripNumber = {tripNumber}"
+        self.cursor.execute(query)
+        tripCount = self.cursor.fetchone()
+        if(tripCount != '0'):
+            self.cnx.commit()
+            self.cnx.close()
+            return True
+        else:
+            self.cnx.commit()
+            self.cnx.close()
+            return False
+        
+
         
         
