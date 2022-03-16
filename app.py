@@ -2,7 +2,7 @@ import os
 import mysql.connector
 import datetime
 import json
-from flask import Flask, request
+from flask import Flask, request, make_response, send_file
 
 def create_app(test_config=None):
     # create and configure the app
@@ -52,6 +52,10 @@ def create_app(test_config=None):
             return json2
         else:
             return 'Content-Type not supported!'
+
+    @app.route('/riskassessments', methods=['GET'])
+    def get_blank_risk_assessment():
+        return make_response(send_file("BlankFlight.json"))
 
     @app.route('/riskassessments/delete/<id>', methods=['DELETE'])
     def delete_risk_assessment_by_id(id):
