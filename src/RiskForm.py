@@ -15,7 +15,6 @@ db = mySQL_Connector()
 
 class RiskForm(Resource):
     def post(self):
-        print(request)
         risk_form = Form(request.get_json())
         # # if db.check_record(risk_form.tripNumber):
         # #     # check for changed fields

@@ -26,10 +26,8 @@ class mySQL_Connector:
     
     def insert_record(self, query):
         self.cursor.execute(query)
-        #display_info = self.cursor.fetchall()
         self.cnx.commit()
-        # self.cnx.close()
-        #return display_info
+       
 
 
     def check_record(self, tripNumber):
@@ -38,7 +36,6 @@ class mySQL_Connector:
         tripCount = self.cursor.fetchall()
         print(tripCount, file=sys.stdout)
         if tripCount:
-            # if(tripCount[0]):
             print('yay', file=sys.stdout)
             return True
         else:
