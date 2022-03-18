@@ -57,19 +57,19 @@ def create_app(test_config=None):
         return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
     # Update Risk Assessment Entry in Database Based Off JSON Object
-    @app.route('/riskassessments/update', methods=['POST'])
-    def add_risk_assessment_by_json():
-        content_type = request.headers.get('Content-Type')
-        if (content_type == 'application/json'):
-            data = request.json
-            dbcursor = database.cursor()
-            sql = "INSERT INTO RiskAssessments (TripNumber, LastUpdated, FlightInformation, ActiveSubmission) VALUES (%s, %s, %s, %s)"
-            values = (data['FlightInformation']['Release/Trip #'], datetime.datetime.now(), json.dumps(data['FlightInformation']), json.dumps(data))
-            dbcursor.execute(sql, values)
-            database.commit()
-            return data
-        else:
-            return 'Content-Type not supported!'
+    # @app.route('/riskassessments/update', methods=['POST'])
+    # def update_risk_assessment_by_json():
+    #     content_type = request.headers.get('Content-Type')
+    #     if (content_type == 'application/json'):
+    #         data = request.json
+    #         dbcursor = database.cursor()
+    #         sql = "INSERT INTO RiskAssessments (TripNumber, LastUpdated, FlightInformation, ActiveSubmission) VALUES (%s, %s, %s, %s)"
+    #         values = (data['FlightInformation']['Release/Trip #'], datetime.datetime.now(), json.dumps(data['FlightInformation']), json.dumps(data))
+    #         dbcursor.execute(sql, values)
+    #         database.commit()
+    #         return data
+    #     else:
+    #         return 'Content-Type not supported!'
 
     # Send BlankFlight.json File
     @app.route('/riskassessments', methods=['GET'])
