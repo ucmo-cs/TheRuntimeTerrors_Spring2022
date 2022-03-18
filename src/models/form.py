@@ -43,69 +43,7 @@ class Form():
         self.permit = request['permit']
         self.safetyItems = request['safetyItems']
         self.limitations = request['limitations']
-
-    # @property
-    # def data(self):
-    #     return {
-    #         'flightInformation':
-    #             {
-    #                 'date': self.flightDate,
-    #                 'trip': self.tripNumber,
-    #                 'tailNumber': self.tailNumber,
-    #                 'departure': self.departure,
-    #                 'destination': self.destination
-    #             }
-    #         ,
-    #         'pilotQualificationsAndExperience': 
-    #             {
-    #                 'captainLessThan200': self.captainLessThan200,
-    #                 'officerLessThan200': self.officerLessThan200,
-    #                 'singlePilot': self.singlePilot,
-    #                 'capLess100in90': self.capLess100in90,
-    #                 'duty12Hours': self.duty12Hours,
-    #                 'flightTime': self.flightTime,
-    #                 'crewRest': self.crewRest
-    #             }
-    #         ,
-    #         'operatingEnvironment':
-    #             {
-    #                 'verticalGuidance': self.verticalGuidance,
-    #                 'circlingApproach': self.circlingApproach,
-    #                 'publishedApproach': self.publishedApproach,
-    #                 'mountianous': self.mountainous,
-    #                 'controlTower': self.controlTower,
-    #                 'uncontrolledAir': self.uncontrolledAir,
-    #                 'alternatePort': self.alternatePort,
-    #                 'elevation': self.elevation,
-    #                 'wetRunway': self.wetRunway,
-    #                 'contaminatedRunway': self.contaiminatedRunway,
-    #                 'winter': self.winter,
-    #                 'twilight': self.twilight,
-    #                 'night': self.night,
-    #                 'stopDist': self.stopDist,
-    #                 'repositioning': self.repositioning,
-    #                 'popUp': self.popUp,
-    #                 'international': self.international,
-    #                 'weatherReport': self.weatherReport,
-    #                 'storms': self.storms,
-    #                 'turbulence': self.turbulence,
-    #                 'visability': self.visability,
-    #                 'rain': self.rain,
-    #                 'snow': self.snow,
-    #                 'ice': self.ice,
-    #                 'surfaceWinds': self.surfaceWinds,
-    #                 'crossWinds': self.crossWinds,
-    #                 'brakeAction': self.brakeAction,
-    #             }
-    #         ,
-    #         'equipment':
-    #             {
-    #                 'permit': self.permit,
-    #                 'safetyItems': self.safetyItems,
-    #                 'limitations': self.limitations
-    #             }
-            
-    #     }
+        # self.dont_apply = [self.flightDate, self.tripNumber, self.tailNumber, self.departure, self.destination]
 
     @property
     def data(self):

@@ -2,6 +2,7 @@ from dis import dis
 from flask import jsonify
 from mysql.connector import connect, Error
 import mysql.connector
+import sys
 
 
 class mySQL_Connector:
@@ -23,27 +24,28 @@ class mySQL_Connector:
                 print(err)
                 exit()
     
-    def get_all_db(self, query):
+    def insert_record(self, query):
         self.cursor.execute(query)
         #display_info = self.cursor.fetchall()
         self.cnx.commit()
-        self.cnx.close()
+        # self.cnx.close()
         #return display_info
 
 
     def check_record(self, tripNumber):
-        query = f"Select count(*) from risk where tripNumber = {tripNumber}"
+        query = f"Select tripNumber from risk where tripNumber = {tripNumber} LIMIT 1"
         self.cursor.execute(query)
-        tripCount = self.cursor.fetchone()
-        if(tripCount != '0'):
-            self.cnx.commit()
-            self.cnx.close()
+        tripCount = self.cursor.fetchall()
+        print(tripCount, file=sys.stdout)
+        if tripCount:
+            # if(tripCount[0]):
+            print('yay', file=sys.stdout)
             return True
         else:
-            self.cnx.commit()
-            self.cnx.close()
+            print('error', file=sys.stdout)
             return False
         
 
-        
+    def close_connection(self):
+        self.cnx.close()
         
