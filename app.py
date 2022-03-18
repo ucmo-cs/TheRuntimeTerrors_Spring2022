@@ -39,7 +39,7 @@ def create_app(test_config=None):
             data = request.json
             dbcursor = database.cursor()
             sql = "INSERT INTO RiskAssessments (TripNumber, LastUpdated, FlightInformation, ActiveSubmission) VALUES (%s, %s, %s, %s)"
-            values = (data['FlightInformation']['Release/Trip #'], datetime.datetime.now(), json.dumps(data['FlightInformation']), json.dumps(data))
+            values = (data['FlightInformation']['Release/Trip #'], datetime.datetime.now(), json.dumps(data['FlightInformation']), json.dumps(list(data.values())))
             dbcursor.execute(sql, values)
             database.commit()
             return data
