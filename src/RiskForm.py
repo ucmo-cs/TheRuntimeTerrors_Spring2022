@@ -16,21 +16,18 @@ db = mySQL_Connector()
 class RiskForm(Resource):
     def post(self):
         risk_form = Form(request.get_json())
-        # # if db.check_record(risk_form.tripNumber):
-        # #     # check for changed fields
-        # #     # do an update with changed fields
-        # #     historicalSubQuery = f"Select activeSubmission from risk where tripNumber = {risk_form.tripNumber}"
-        # #     historicalSub = db.get_all_db(historicalSubQuery) 
-        # #     updateRecordQuery = f"UPDATE risk SET lastUpdated = CURRENTDATE, totalRiskValue = '12',\
-        # #     activeSubmission = {risk_form.data}, historicalSubmission = {historicalSub} WHERE tripNumber = {risk_form.tripNumber}"
-        # #     updateRecord = db.get_all_db(updateRecordQuery)
-        # #     return risk_form.data, HTTPStatus.OK
-        # # else: 
-        # #     # create new record CHANGE TRIP RISK VAL
         
         riskJson = risk_form.data
         if db.check_record(risk_form.tripNumber):
-            pass
+            historicalSubQuery = f"Select activeSubmission from risk where tripNumber = \'{risk_form.tripNumber}\'"
+            historical = db.select_record(historicalSubQuery)
+            # print(historical[0][0], sys.stdout)
+            updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'17\',\
+            activeSubmission = \'{json.dumps(riskJson)}\', historicalSubmission = \'{historical}\' WHERE tripNumber = \'{risk_form.tripNumber}\'"
+            # print('*'*100)
+            # print(updateRecordQuery, sys.stdout)
+            # print('*'*100)
+            db.insert_record(updateRecordQuery)
             return {'data': 'trip number already exists'}
         else:
             insertQuery = f'INSERT INTO risk(tripNumber, lastUpdated, totalRiskValue, activeSubmission) VALUES (\'{risk_form.tripNumber}\', curdate(), \'12\', \'{json.dumps(riskJson)}\')'
@@ -46,4 +43,5 @@ api.add_resource(RiskForm, '/submit_risk_form')
 
 
 if __name__ == "__main__":
-    app.run(debug=True, use_debugger=True)
+    # app.run(debug=True, use_debugger=True)
+    app.run()
