@@ -41,6 +41,8 @@ class RiskForm(Resource):
     def get(self):
         return {'some json': 'test'}
 
+
+
     
 api.add_resource(RiskForm, '/submit_risk_form')
 

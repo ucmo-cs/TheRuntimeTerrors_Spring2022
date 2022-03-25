@@ -44,6 +44,15 @@ class Form():
         self.safetyItems = request['safetyItems']
         self.limitations = request['limitations']
         # self.dont_apply = [self.flightDate, self.tripNumber, self.tailNumber, self.departure, self.destination]
+        self.totalRiskValue = trv
+
+    trv = 0
+    self.totalRiskValue = self.snow + self.ice
+
+    def read(self, request):
+        for(i = 0; i < 37; i++) {
+            self.totalRiskValue += self.safetyItems
+        }
 
     @property
     def data(self):
