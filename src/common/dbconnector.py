@@ -27,11 +27,10 @@ class mySQL_Connector:
     def insert_record(self, query):
         self.cursor.execute(query)
         self.cnx.commit()
-       
 
 
     def check_record(self, tripNumber):
-        query = f"Select tripNumber from risk where tripNumber = {tripNumber} LIMIT 1"
+        query = f"Select tripNumber from risk where tripNumber = \'{tripNumber}\' LIMIT 1"
         self.cursor.execute(query)
         tripCount = self.cursor.fetchall()
         print(tripCount, file=sys.stdout)
@@ -41,7 +40,14 @@ class mySQL_Connector:
         else:
             print('error', file=sys.stdout)
             return False
-        
+
+    
+    def select_record(self, query):
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        result = result[0][0]
+        return result
+         
 
     def close_connection(self):
         self.cnx.close()

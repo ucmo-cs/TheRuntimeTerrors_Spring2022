@@ -46,6 +46,16 @@ class Form():
         # self.dont_apply = [self.flightDate, self.tripNumber, self.tailNumber, self.departure, self.destination]
 
     @property
+    def flightData(self):
+        return{
+                "date": self.flightDate,
+                "trip": self.tripNumber,
+                "tailNumber": self.tailNumber,
+                "departure": self.departure,
+                "destination": self.destination
+                }
+    
+    @property
     def data(self):
         return {
             "FlightInformation": 
