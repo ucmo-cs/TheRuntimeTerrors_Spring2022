@@ -1,3 +1,6 @@
+from __future__ import print_function
+
+
 class Form():
     def __init__(self, request):
         self.flightDate = request['flightDate']
@@ -46,258 +49,292 @@ class Form():
         # self.dont_apply = [self.flightDate, self.tripNumber, self.tailNumber, self.departure, self.destination]
         self.totalRiskValue = trv
 
-    trv = 0
-    self.totalRiskValue = self.snow + self.ice
-
     def read(self, request):
-        for(i = 0; i < 37; i++) {
-            self.totalRiskValue += self.safetyItems
-        }
+        self.totalRiskValue = (
+            self.captainLessThan200 +
+            self.officerLessThan200 +
+            self.singlePilot +
+            self.capLess100in90 +
+            self.offLess100in90 +
+            self.duty12Hours +
+            self.flightTime +
+            self.crewRest +
+            self.verticalGuidance +
+            self.circlingApproach +
+            self.publishedApproach +
+            self.mountainous +
+            self.controlTower +
+            self.uncontrolledAir +
+            self.alternatePort +
+            self.elevation +
+            self.wetRunway +
+            self.contaiminatedRunway +
+            self.winter +
+            self.twilight +
+            self.night +
+            self.stopDist +
+            self.repositioning +
+            self.popUp +
+            self.international +
+            self.weatherReport +
+            self.storms +
+            self.turbulence +
+            self.visability +
+            self.rain +
+            self.snow +
+            self.ice +
+            self.surfaceWinds +
+            self.crossWinds +
+            self.brakeAction +
+            self.permit +
+            self.safetyItems +
+            self.limitations
+        )
 
     @property
     def data(self):
         return {
-            "FlightInformation": 
+            "FlightInformation":
                 {
-                "date": self.flightDate,
-                "trip": self.tripNumber,
-                "tailNumber": self.tailNumber,
-                "departure": self.departure,
-                "destination": self.destination
+                    "date": self.flightDate,
+                    "trip": self.tripNumber,
+                    "tailNumber": self.tailNumber,
+                    "departure": self.departure,
+                    "destination": self.destination
                 },
-               
+
             "PilotQualificationsAndExperience": [
                 {
-                "name": "CaptainLessThan200",
-                "descrip": "Captain with less than 200 hours in type",
-                "maxVal": 5,
-                "inputVal": self.captainLessThan200
+                    "name": "CaptainLessThan200",
+                    "descrip": "Captain with less than 200 hours in type",
+                    "maxVal": 5,
+                    "inputVal": self.captainLessThan200
                 },
                 {
-                "name": "OfficerLessThan200",
-                "descrip": "First Officer with less than 200 hours in type",
-                "maxVal": 5,
-                "inputVal": self.officerLessThan200
+                    "name": "OfficerLessThan200",
+                    "descrip": "First Officer with less than 200 hours in type",
+                    "maxVal": 5,
+                    "inputVal": self.officerLessThan200
                 },
                 {
-                "name": "SinglePilot",
-                "descrip": "Single Pilot Flight",
-                "maxVal": 5,
-                "inputVal": self.singlePilot
+                    "name": "SinglePilot",
+                    "descrip": "Single Pilot Flight",
+                    "maxVal": 5,
+                    "inputVal": self.singlePilot
                 },
                 {
-                "name": "CapLess100in90",
-                "descrip": "Captain with less than 100 hours last 90 days",
-                "maxVal": 3,
-                "inputVal": self.capLess100in90
+                    "name": "CapLess100in90",
+                    "descrip": "Captain with less than 100 hours last 90 days",
+                    "maxVal": 3,
+                    "inputVal": self.capLess100in90
                 },
                 {
-                "name": "OffLess100in90",
-                "descrip": "Officer with less than 100 hours in last 90 days",
-                "maxVal": 3,
-                "inputVal": self.offLess100in90
+                    "name": "OffLess100in90",
+                    "descrip": "Officer with less than 100 hours in last 90 days",
+                    "maxVal": 3,
+                    "inputVal": self.offLess100in90
                 },
                 {
-                "name": "Duty12Hours",
-                "descrip": "Duty day greater than 12 hours",
-                "maxVal": 4,
-                "inputVal": self.duty12Hours
+                    "name": "Duty12Hours",
+                    "descrip": "Duty day greater than 12 hours",
+                    "maxVal": 4,
+                    "inputVal": self.duty12Hours
                 },
                 {
-                "name": "FlightTime",
-                "descrip": "Flight time greater than 8 hours in the duty day",
-                "maxVal": 4,
-                "inputVal": self.flightTime
+                    "name": "FlightTime",
+                    "descrip": "Flight time greater than 8 hours in the duty day",
+                    "maxVal": 4,
+                    "inputVal": self.flightTime
                 },
                 {
-                "name": "CrewRest",
-                "descrip": "Crew Rest less than 10 hours prior to the duty day",
-                "maxVal": 5,
-                "inputVal": self.crewRest
+                    "name": "CrewRest",
+                    "descrip": "Crew Rest less than 10 hours prior to the duty day",
+                    "maxVal": 5,
+                    "inputVal": self.crewRest
                 }
             ],
             "OperatingEnviroment": [
                 {
-                "name": "VerticalGuidance",
-                "descrip": "VOR/GPS/LOC/ADF (Best approach available w/o vertical guidance)",
-                "maxVal": 3,
-                "inputVal": self.verticalGuidance
+                    "name": "VerticalGuidance",
+                    "descrip": "VOR/GPS/LOC/ADF (Best approach available w/o vertical guidance)",
+                    "maxVal": 3,
+                    "inputVal": self.verticalGuidance
                 },
                 {
-                "name": "CirclingApproach",
-                "descrip": "Circling approach (best available approach)",
-                "maxVal": 4,
-                "inputVal": self.circlingApproach
+                    "name": "CirclingApproach",
+                    "descrip": "Circling approach (best available approach)",
+                    "maxVal": 4,
+                    "inputVal": self.circlingApproach
                 },
                 {
-                "name": "PublishedApproach",
-                "descrip": "No published approaches",
-                "maxVal": 4,
-                "inputVal": self.publishedApproach
+                    "name": "PublishedApproach",
+                    "descrip": "No published approaches",
+                    "maxVal": 4,
+                    "inputVal": self.publishedApproach
                 },
                 {
-                "name": "Mountianous",
-                "descrip": "Mountainous airport",
-                "maxVal": 5,
-                "inputVal": self.mountainous
+                    "name": "Mountianous",
+                    "descrip": "Mountainous airport",
+                    "maxVal": 5,
+                    "inputVal": self.mountainous
                 },
                 {
-                "name": "ControlTower",
-                "descrip": "Control tower not operational at ETA or ETD",
-                "maxVal": 3,
-                "inputVal": self.controlTower
+                    "name": "ControlTower",
+                    "descrip": "Control tower not operational at ETA or ETD",
+                    "maxVal": 3,
+                    "inputVal": self.controlTower
                 },
                 {
-                "name": "UncontrolledAir",
-                "descrip": "Uncontrolled airport",
-                "maxVal": 5,
-                "inputVal": self.uncontrolledAir
+                    "name": "UncontrolledAir",
+                    "descrip": "Uncontrolled airport",
+                    "maxVal": 5,
+                    "inputVal": self.uncontrolledAir
                 },
                 {
-                "name": "AlternatePort",
-                "descrip": "Alternate airport not selected",
-                "maxVal": 4,
-                "inputVal": self.alternatePort
+                    "name": "AlternatePort",
+                    "descrip": "Alternate airport not selected",
+                    "maxVal": 4,
+                    "inputVal": self.alternatePort
                 },
                 {
-                "name": "Elevation",
-                "descrip": "Elevation of primary airport greater than 5000 ft. MSL)",
-                "maxVal": 3,
-                "inputVal": self.elevation
+                    "name": "Elevation",
+                    "descrip": "Elevation of primary airport greater than 5000 ft. MSL)",
+                    "maxVal": 3,
+                    "inputVal": self.elevation
                 },
                 {
-                "name": "WetRunway",
-                "descrip": "Wet runway",
-                "maxVal": 3,
-                "inputVal": self.wetRunway
+                    "name": "WetRunway",
+                    "descrip": "Wet runway",
+                    "maxVal": 3,
+                    "inputVal": self.wetRunway
                 },
                 {
-                "name": "ContaminatedRunway",
-                "descrip": "Contaminated runway",
-                "maxVal": 3,
-                "inputVal": self.contaiminatedRunway
+                    "name": "ContaminatedRunway",
+                    "descrip": "Contaminated runway",
+                    "maxVal": 3,
+                    "inputVal": self.contaiminatedRunway
                 },
                 {
-                "name": "Winter",
-                "descrip": "Winter operation",
-                "maxVal": 3,
-                "inputVal": self.winter
+                    "name": "Winter",
+                    "descrip": "Winter operation",
+                    "maxVal": 3,
+                    "inputVal": self.winter
                 },
                 {
-                "name": "Twilight",
-                "descrip": "Twilight operation",
-                "maxVal": 2,
-                "inputVal": self.twilight
+                    "name": "Twilight",
+                    "descrip": "Twilight operation",
+                    "maxVal": 2,
+                    "inputVal": self.twilight
                 },
                 {
-                "name": "Night",
-                "descrip": "Night operation",
-                "maxVal": 5,
-                "inputVal": self.night
+                    "name": "Night",
+                    "descrip": "Night operation",
+                    "maxVal": 5,
+                    "inputVal": self.night
                 },
                 {
-                "name": "StopDist",
-                "descrip": "Stopping distance greater than 80 percent of available runway",
-                "maxVal": 5,
-                "inputVal": self.stopDist
+                    "name": "StopDist",
+                    "descrip": "Stopping distance greater than 80 percent of available runway",
+                    "maxVal": 5,
+                    "inputVal": self.stopDist
                 },
                 {
-                "name": "Repositioning",
-                "descrip": "Repositioning flight (no passengers or cargo)",
-                "maxVal": 5,
-                "inputVal": self.repositioning
+                    "name": "Repositioning",
+                    "descrip": "Repositioning flight (no passengers or cargo)",
+                    "maxVal": 5,
+                    "inputVal": self.repositioning
                 },
                 {
-                "name": "PopUp",
-                "descrip": "Pop up trip (Less than 4 hours crew notice)",
-                "maxVal": 3,
-                "inputVal": self.popUp
+                    "name": "PopUp",
+                    "descrip": "Pop up trip (Less than 4 hours crew notice)",
+                    "maxVal": 3,
+                    "inputVal": self.popUp
                 },
                 {
-                "name": "International",
-                "descrip": "International operation",
-                "maxVal": 2,
-                "inputVal": self.international
+                    "name": "International",
+                    "descrip": "International operation",
+                    "maxVal": 2,
+                    "inputVal": self.international
                 },
                 {
-                "name": "WeatherReport",
-                "descrip": "No weather reporting at destination ",
-                "maxVal": 5,
-                "inputVal": self.weatherReport
+                    "name": "WeatherReport",
+                    "descrip": "No weather reporting at destination ",
+                    "maxVal": 5,
+                    "inputVal": self.weatherReport
                 },
                 {
-                "name": "Storms",
-                "descrip": "Thunderstorms at departure and/or destination",
-                "maxVal": 4,
-                "inputVal": self.storms
+                    "name": "Storms",
+                    "descrip": "Thunderstorms at departure and/or destination",
+                    "maxVal": 4,
+                    "inputVal": self.storms
                 },
                 {
-                "name": "Turbulence",
-                "descrip": "Severe Turbulence",
-                "maxVal": 5,
-                "inputVal": self.turbulence
+                    "name": "Turbulence",
+                    "descrip": "Severe Turbulence",
+                    "maxVal": 5,
+                    "inputVal": self.turbulence
                 },
                 {
-                "name": "Visability",
-                "descrip": "Ceiling & visibility at destination less than 500 ft. / 2 sm",
-                "maxVal": 3,
-                "inputVal": self.visability
+                    "name": "Visability",
+                    "descrip": "Ceiling & visibility at destination less than 500 ft. / 2 sm",
+                    "maxVal": 3,
+                    "inputVal": self.visability
                 },
                 {
-                "name": "Rain",
-                "descrip": "Heavy rain at departure and/or destination",
-                "maxVal": 5,
-                "inputVal": self.rain
+                    "name": "Rain",
+                    "descrip": "Heavy rain at departure and/or destination",
+                    "maxVal": 5,
+                    "inputVal": self.rain
                 },
                 {
-                "name": "Snow",
-                "descrip": "Frozen precipitation at departure and/or destination",
-                "maxVal": 3,
-                "inputVal": self.snow
+                    "name": "Snow",
+                    "descrip": "Frozen precipitation at departure and/or destination",
+                    "maxVal": 3,
+                    "inputVal": self.snow
                 },
                 {
-                "name": "Ice",
-                "descrip": "Icing (moderate-severe)",
-                "maxVal": 5,
-                "inputVal": self.ice
+                    "name": "Ice",
+                    "descrip": "Icing (moderate-severe)",
+                    "maxVal": 5,
+                    "inputVal": self.ice
                 },
                 {
-                "name": "SurfaceWinds",
-                "descrip": "Surface winds greater than 30 knots",
-                "maxVal": 4,
-                "inputVal": self.surfaceWinds
+                    "name": "SurfaceWinds",
+                    "descrip": "Surface winds greater than 30 knots",
+                    "maxVal": 4,
+                    "inputVal": self.surfaceWinds
                 },
                 {
-                "name": "CrossWinds",
-                "descrip": "Crosswinds greater than 15 knots",
-                "maxVal": 4,
-                "inputVal": self.crossWinds
+                    "name": "CrossWinds",
+                    "descrip": "Crosswinds greater than 15 knots",
+                    "maxVal": 4,
+                    "inputVal": self.crossWinds
                 },
                 {
-                "name": "BrakeAction",
-                "descrip": "Runway braking action less than good",
-                "maxVal": 5,
-                "inputVal": self.brakeAction
+                    "name": "BrakeAction",
+                    "descrip": "Runway braking action less than good",
+                    "maxVal": 5,
+                    "inputVal": self.brakeAction
                 }
             ],
             "Equipment": [
                 {
-                "name": "Permit",
-                "descrip": "Special Flight Permit Operation (ferry permit)",
-                "maxVal": 3,
-                "inputVal": self.permit
+                    "name": "Permit",
+                    "descrip": "Special Flight Permit Operation (ferry permit)",
+                    "maxVal": 3,
+                    "inputVal": self.permit
                 },
                 {
-                "name": "MEL/CDL",
-                "descrip": "MEL / CDL Items (items related to safety of flight)",
-                "maxVal": 2,
-                "inputVal": self.safetyItems
+                    "name": "MEL/CDL",
+                    "descrip": "MEL / CDL Items (items related to safety of flight)",
+                    "maxVal": 2,
+                    "inputVal": self.safetyItems
                 },
                 {
-                "name": "Limitations",
-                "descrip": "Special flight limitations based on AFM equipment limitations",
-                "maxVal": 2,
-                "inputVal": self.limitations
+                    "name": "Limitations",
+                    "descrip": "Special flight limitations based on AFM equipment limitations",
+                    "maxVal": 2,
+                    "inputVal": self.limitations
                 }
             ]
         }
