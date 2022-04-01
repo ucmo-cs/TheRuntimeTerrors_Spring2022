@@ -116,9 +116,8 @@ class MakeJson:
                         }
                         
                         try {
-                            const rawResponse = await fetch(fetchLink), {
+                            const rawResponse = await fetch(fetchLink, {
                                 method: "POST",
-                                headers: headers,
                                 body: JSON.stringify(body)
                             });
                             const content = await rawResponse.json();
