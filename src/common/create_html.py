@@ -98,7 +98,7 @@ class MakeJson:
                     const riskForm = document.querySelector("#riskForm");
                     if (riskForm) {
                         riskForm.addEventListener("submit", function(e) {
-                            submitform(e, this);
+                            submitForm(e, this);
                         });
                     }
                     
