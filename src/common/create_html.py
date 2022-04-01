@@ -121,7 +121,7 @@ class MakeJson:
                                 headers: headers,
                                 body: JSON.stringify(body)
                             });
-                            const contdnt = await rawResponse.json();
+                            const content = await rawResponse.json();
                             return content;
                         }
                     }
