@@ -26,7 +26,7 @@ class MakeJson:
 
         # Create Form
         html = html + """
-                <form>
+                <form id="riskForm">
         """
 
         # Create Flight Information Fields
@@ -88,24 +88,52 @@ class MakeJson:
 
         # End Form
         html = html + """
-                    <input type="submit" onclick="createByID()">
+                    <input id="submitButton" type="submit" onclick="createByID()">
                 </form>
         """
 
         # Finish HTML Document
         html = html + """
                 <script type="text/javascript">
-                    function deleteByID() {
-                        var id = document.getElementById("deleteID").value;
-                        fetch('http://127.0.0.1:5000/submit_risk_form' + id, {
-                            method: 'DELETE'
+                    const risk Form = document.querySelector("#riskForm");
+                    if (riskForm) {
+                        riskForm.addEventListener("submit", function(e) {
+                            submitform(e, this);
                         });
                     }
-                    function createByID() {
-                        var tripNumber = document.getElementById("Release/Trip #").value;
-                        fetch('http://127.0.0.1:5000/submit_risk_form' + tripNumber, {
-                            method: 'POST'
-                        });
+                    
+                    function buildJsonFormData(form) {
+                        const jsonFormData = { };
+                        for (const pair of new FormData(form)) {
+                            jsonFormData[pair[0]] = pair[1];
+                        }
+                        return jsonFormData;
+                    }
+                    
+                    async performPostHttpRequest(fetchLink, header, body) {
+                        if (!fetchLink || !headers || !body) {
+                            // throw new Error
+                        }
+                        
+                        try {
+                            const rawResponse = await fetch(fetchLink), {
+                                method: "POST",
+                                headers: headers,
+                                body: JSON.stringify(body)
+                            });
+                            const contdnt = await rawResponse.json();
+                            return content;
+                        }
+                    }
+                    
+                    async function submitForm(e, form) {
+                        e.preventDefault();
+                        const submitButton = document.getElementById("submitButton");
+                        submitButton.disabled = true;
+                        setTimeout(() => submitButton.disabled = false, 2000);
+                        const jsonFormData = buildJsonFormData(form);
+                        const response = await fetchService.performnPostHttpRequest("http://127.0.0.1:5000", headers, jsonFormData);
+                        console.log(response);
                     }
                 </script>
             </body>
