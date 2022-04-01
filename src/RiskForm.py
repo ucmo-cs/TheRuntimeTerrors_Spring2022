@@ -1,17 +1,18 @@
 import json
 import sys
 from tkinter import CURRENT
-from flask import Flask, request, jsonify
+from flask import Flask, Response, make_response, render_template, request, jsonify, send_file
 from flask_restful import Resource, Api
 from common.dbconnector import mySQL_Connector
-import common
+from common.create_html import MakeJson
 from models.form import Form
 from http import HTTPStatus
+
 
 app = Flask(__name__)
 api = Api(app)
 db = mySQL_Connector()
-
+mkjson = MakeJson()
 
 class RiskForm(Resource):
     def post(self):
@@ -31,14 +32,20 @@ class RiskForm(Resource):
             db.insert_record(insertQuery)
         
         return risk_form.data, HTTPStatus.CREATED
+    
+    def delete(self):
+        pass
 
+class ReturnHTML(Resource):
     def get(self):
-        return {'some json': 'test'}
-
+        mkjson.make_json()
+        headers = {'Content-Type': 'text/html'} 
+        return make_response(send_file('models/index.html'),200,headers)
     
 api.add_resource(RiskForm, '/submit_risk_form')
+api.add_resource(ReturnHTML, '/')
 
 
 if __name__ == "__main__":
-    # app.run(debug=True, use_debugger=True)
-    app.run()
+    app.run(debug=True)
+    # app.run()
