@@ -95,7 +95,7 @@ class MakeJson:
         # Finish HTML Document
         html = html + """
                 <script type="text/javascript">
-                    const risk Form = document.querySelector("#riskForm");
+                    const riskForm = document.querySelector("#riskForm");
                     if (riskForm) {
                         riskForm.addEventListener("submit", function(e) {
                             submitform(e, this);
@@ -110,7 +110,7 @@ class MakeJson:
                         return jsonFormData;
                     }
                     
-                    async performPostHttpRequest(fetchLink, header, body) {
+                    async function performPostHttpRequest(fetchLink, header, body) {
                         if (!fetchLink || !headers || !body) {
                             // throw new Error
                         }
