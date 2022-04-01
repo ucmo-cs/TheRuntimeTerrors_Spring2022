@@ -88,7 +88,7 @@ class MakeJson:
 
         # End Form
         html = html + """
-                    <input id="submitButton" type="submit" onclick="createByID()">
+                    <input id="submitButton" type="submit">
                 </form>
         """
 
