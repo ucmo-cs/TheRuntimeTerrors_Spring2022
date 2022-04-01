@@ -122,6 +122,8 @@ class MakeJson:
                             });
                             const content = await rawResponse.json();
                             return content;
+                        } catch (error) {
+                          console.error(error);
                         }
                     }
                     
