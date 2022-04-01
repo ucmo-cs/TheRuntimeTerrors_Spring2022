@@ -32,7 +32,9 @@ class RiskForm(Resource):
             db.insert_record(insertQuery)
         
         return risk_form.data, HTTPStatus.CREATED
-
+    
+    def delete(self):
+        pass
 
 class ReturnHTML(Resource):
     def get(self):

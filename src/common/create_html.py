@@ -97,13 +97,13 @@ class MakeJson:
                 <script type="text/javascript">
                     function deleteByID() {
                         var id = document.getElementById("deleteID").value;
-                        fetch('http://127.0.0.1:5000/riskassessments/delete/' + id, {
+                        fetch('http://127.0.0.1:5000/submit_risk_form' + id, {
                             method: 'DELETE'
                         });
                     }
                     function createByID() {
                         var tripNumber = document.getElementById("Release/Trip #").value;
-                        fetch('http://127.0.0.1:5000/submit_risk_assessment' + tripNumber, {
+                        fetch('http://127.0.0.1:5000/submit_risk_form' + tripNumber, {
                             method: 'POST'
                         });
                     }
