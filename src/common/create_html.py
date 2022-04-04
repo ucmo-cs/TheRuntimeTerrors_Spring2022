@@ -26,7 +26,7 @@ class MakeJson:
 
         # Create Form
         html = html + """
-                <form>
+                <form id="riskForm">
         """
 
         # Create Flight Information Fields
@@ -88,24 +88,49 @@ class MakeJson:
 
         # End Form
         html = html + """
-                    <input type="submit" onclick="createByID()">
+                    <input id="submitButton" type="submit">
                 </form>
         """
 
         # Finish HTML Document
         html = html + """
                 <script type="text/javascript">
-                    function deleteByID() {
-                        var id = document.getElementById("deleteID").value;
-                        fetch('http://127.0.0.1:5000/submit_risk_form' + id, {
-                            method: 'DELETE'
+                    const riskForm = document.querySelector("#riskForm");
+                    if (riskForm) {
+                        riskForm.addEventListener("submit", function(e) {
+                            submitForm(e, this);
                         });
                     }
-                    function createByID() {
-                        var tripNumber = document.getElementById("Release/Trip #").value;
-                        fetch('http://127.0.0.1:5000/submit_risk_form' + tripNumber, {
-                            method: 'POST'
-                        });
+                    
+                    function buildJsonFormData(form) {
+                        const jsonFormData = { };
+                        for (const pair of new FormData(form)) {
+                            jsonFormData[pair[0]] = pair[1];
+                        }
+                        return jsonFormData;
+                    }
+                    
+                    async function performPostHttpRequest(fetchLink, body) {                        
+                        try {
+                            const rawResponse = await fetch(fetchLink, {
+                                method: "POST",
+                                body: JSON.stringify(body)
+                            });
+                            const content = await rawResponse.json();
+                            return content;
+                        } catch (error) {
+                          console.error(error);
+                        }
+                    }
+                    
+                    async function submitForm(e, form) {
+                        e.preventDefault();
+                        const submitButton = document.getElementById("submitButton");
+                        submitButton.disabled = true;
+                        setTimeout(() => submitButton.disabled = false, 2000);
+                        const jsonFormData = buildJsonFormData(form);
+                        const response = await performPostHttpRequest("http://127.0.0.1:5000", jsonFormData);
+                        console.log(response);
                     }
                 </script>
             </body>

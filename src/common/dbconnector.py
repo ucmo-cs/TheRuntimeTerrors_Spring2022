@@ -11,7 +11,7 @@ class mySQL_Connector:
             self.cnx = mysql.connector.connect(
                 host='localhost',
                 user='root',
-                password='Ryker723$',
+                password='root',
                 database='flight_risk'
             )
             self.cursor = self.cnx.cursor(buffered = True)
