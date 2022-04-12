@@ -16,6 +16,7 @@ mkjson = MakeJson()
 
 class RiskForm(Resource):
     def post(self):
+        print(request)
         risk_form = Form(request.get_json())
         
         riskJson = risk_form.data

@@ -1,32 +1,32 @@
 {
     "FlightInformation": {
-      "Date": "2022",
-      "Release/Trip #": 1,
-      "Tail Number": 1,
-      "Departure": "Kansas City",
-      "Destination": "Austin"
+      "flightDate": "2022",
+      "tripnumber": 1,
+      "tailnumber": 1,
+      "departure": "Kansas City",
+      "destination": "Austin"
     },
     "PilotQualificationsAndExperience": [
         {
-        "name": "CaptainLessThan200",
+        "name": "captainLessThan200",
         "descrip": "Captain with less than 200 hours in type",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "OfficerLessThan200",
+        "name": "officerLessThan200",
         "descrip": "First Officer with less than 200 hours in type",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "SinglePilot",
+        "name": "singlePilot",
         "descrip": "Single Pilot Flight",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "CapLess100in90",
+        "name": "capLess100in90",
         "descrip": "Captain with less than 100 hours last 90 days",
         "maxVal": 3,
         "inputVal": 0
@@ -38,19 +38,19 @@
         "inputVal": 0
         },
         {
-        "name": "Duty12Hours",
+        "name": "duty12Hours",
         "descrip": "Duty day greater than 12 hours",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "FlightTime",
+        "name": "flightTime",
         "descrip": "Flight time greater than 8 hours in the duty day",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "CrewRest",
+        "name": "crewRest",
         "descrip": "Crew Rest less than 10 hours prior to the duty day",
         "maxVal": 5,
         "inputVal": 0
@@ -58,163 +58,163 @@
       ],
       "OperatingEnviroment": [
         {
-        "name": "VerticalGuidance",
+        "name": "verticalGuidance",
         "descrip": "VOR/GPS/LOC/ADF (Best approach available w/o vertical guidance)",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "CirclingApproach",
+        "name": "circlingApproach",
         "descrip": "Circling approach (best available approach)",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "PublishedApproach",
+        "name": "publishedApproach",
         "descrip": "No published approaches",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "Mountianous",
+        "name": "mountainous",
         "descrip": "Mountainous airport",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "ControlTower",
+        "name": "controlTower",
         "descrip": "Control tower not operational at ETA or ETD",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "UncontrolledAir",
+        "name": "uncontrolledAir",
         "descrip": "Uncontrolled airport",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "AlternatePort",
+        "name": "alternatePort",
         "descrip": "Alternate airport not selected",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "Elevation",
+        "name": "elevation",
         "descrip": "Elevation of primary airport greater than 5000 ft. MSL)",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "WetRunway",
+        "name": "wetRunway",
         "descrip": "Wet runway",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "ContaminatedRunway",
+        "name": "contaminatedRunway",
         "descrip": "Contaminated runway",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "Winter",
+        "name": "winter",
         "descrip": "Winter operation",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "Twilight",
+        "name": "twilight",
         "descrip": "Twilight operation",
         "maxVal": 2,
         "inputVal": 0
         },
         {
-        "name": "Night",
+        "name": "night",
         "descrip": "Night operation",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "StopDist",
+        "name": "stopDist",
         "descrip": "Stopping distance greater than 80% of available runway",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "Repositioning",
+        "name": "repositioning",
         "descrip": "Repositioning flight (no passengers or cargo)",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "PopUp",
+        "name": "popUp",
         "descrip": "Pop up trip (Less than 4 hours crew notice)",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "International",
+        "name": "international",
         "descrip": "International operation",
         "maxVal": 2,
         "inputVal": 0
         },
         {
-        "name": "WeatherReport",
+        "name": "weatherReport",
         "descrip": "No weather reporting at destination ",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "Storms",
+        "name": "storms",
         "descrip": "Thunderstorms at departure and/or destination",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "Turbulence",
+        "name": "turbulence",
         "descrip": "Severe Turbulence",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "Visability",
+        "name": "visability",
         "descrip": "Ceiling & visibility at destination less than 500 ft. / 2 sm",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "Rain",
+        "name": "rain",
         "descrip": "Heavy rain at departure and/or destination",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "Snow",
+        "name": "snow",
         "descrip": "Frozen precipitation at departure and/or destination",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "Ice",
+        "name": "ice",
         "descrip": "Icing (moderate-severe)",
         "maxVal": 5,
         "inputVal": 0
         },
         {
-        "name": "SurfaceWinds",
+        "name": "surfaceWinds",
         "descrip": "Surface winds greater than 30 knots",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "CrossWinds",
+        "name": "crossWinds",
         "descrip": "Crosswinds greater than 15 knots",
         "maxVal": 4,
         "inputVal": 0
         },
         {
-        "name": "BreakAction",
+        "name": "brakeAction",
         "descrip": "Runway braking action less than good",
         "maxVal": 5,
         "inputVal": 0
@@ -222,19 +222,19 @@
       ],
       "Equipment": [
         {
-        "name": "Permit",
+        "name": "permit",
         "descrip": "Special Flight Permit Operation (ferry permit)",
         "maxVal": 3,
         "inputVal": 0
         },
         {
-        "name": "MEL/CDL",
+        "name": "safetyItems",
         "descrip": "MEL / CDL Items (items related to safety of flight)",
         "maxVal": 2,
         "inputVal": 0
         },
         {
-        "name": "Limitations",
+        "name": "limitations",
         "descrip": "Special flight limitations based on AFM equipment limitations",
         "maxVal": 2,
         "inputVal": 0
