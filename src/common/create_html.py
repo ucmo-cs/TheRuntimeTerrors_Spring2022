@@ -113,8 +113,15 @@ class MakeJson:
                     
                     async function performPostHttpRequest(fetchLink, body) {                        
                         try {
+                            var myHeaders = new Headers();
+                            myHeaders.append('Content-Type', 'application/json');
                             const rawResponse = await fetch(fetchLink, {
                                 method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+
                                 body: JSON.stringify(body)
                             });
                             const content = await rawResponse.json();
@@ -125,14 +132,40 @@ class MakeJson:
                     }
                     
                     async function submitForm(e, form) {
-                        e.preventDefault();
-                        const submitButton = document.getElementById("submitButton");
-                        submitButton.disabled = true;
-                        setTimeout(() => submitButton.disabled = false, 2000);
-                        const jsonFormData = buildJsonFormData(form);
-                        const response = await performPostHttpRequest("http://127.0.0.1:5000", jsonFormData);
-                        console.log(response);
+                        
+                        
+                        try{
+
+                            e.preventDefault();
+                            const submitButton = document.getElementById("submitButton");
+                            submitButton.disabled = true;
+                            setTimeout(() => submitButton.disabled = false, 2000);
+                            const jsonFormData = buildJsonFormData(form);
+                            
+                            const response = await performPostHttpRequest("http://127.0.0.1:5000/submit_risk_form", jsonFormData);
+                            console.log(response);
+                        } catch(err){
+                            const { exec } = require("child_process");
+
+                            exec('start cmd.exe @cmd /k "echo Hello World!', (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    if(stdout)
+        console.log(`stdout: ${stdout}`);
+});
+                        }
                     }
+                    function saveStaticDataToFile(err, jsonMSG) {
+                        var blob = new Blob([err + jsonMSG],
+                                     { type: "text/plain;charset=utf-8" });
+                        saveAs(blob, "static.txt");
+                    } 
                 </script>
             </body>
         </html>
