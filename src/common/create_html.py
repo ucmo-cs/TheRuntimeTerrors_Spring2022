@@ -112,15 +112,18 @@ class MakeJson:
                     }
                     
                     async function performPostHttpRequest(fetchLink, body) {                        
-                        try {
+                        try{
                             const rawResponse = await fetch(fetchLink, {
                                 method: "POST",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
                                 body: JSON.stringify(body)
                             });
                             const content = await rawResponse.json();
                             return content;
-                        } catch (error) {
-                          console.error(error);
+                        }catch(error){
+                            console.error(error);
                         }
                     }
                     
@@ -130,7 +133,7 @@ class MakeJson:
                         submitButton.disabled = true;
                         setTimeout(() => submitButton.disabled = false, 2000);
                         const jsonFormData = buildJsonFormData(form);
-                        const response = await performPostHttpRequest("http://127.0.0.1:5000", jsonFormData);
+                        const response = await performPostHttpRequest("http://127.0.0.1:5000/submit_risk_form", jsonFormData);
                         console.log(response);
                     }
                 </script>
