@@ -1,8 +1,8 @@
 {
     "FlightInformation": {
       "flightDate": "2022",
-      "tripnumber": 1,
-      "tailnumber": 1,
+      "tripNumber": 1,
+      "tailNumber": 1,
       "departure": "Kansas City",
       "destination": "Austin"
     },
@@ -112,7 +112,7 @@
         "inputVal": 0
         },
         {
-        "name": "contaminatedRunway",
+        "name": "contaiminatedRunway",
         "descrip": "Contaminated runway",
         "maxVal": 3,
         "inputVal": 0

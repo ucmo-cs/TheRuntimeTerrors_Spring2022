@@ -29,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiskForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiskForm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/create_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/create_html.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/risk_assessment.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/risk_assessment.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_unit.test.test_post&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
