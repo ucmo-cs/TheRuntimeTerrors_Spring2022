@@ -24,12 +24,12 @@ class RiskForm(Resource):
         if db.check_record(risk_form.tripNumber):
             historicalSubQuery = f"Select activeSubmission from risk where tripNumber = \'{risk_form.tripNumber}\'"
             historical = db.select_record(historicalSubQuery)
-            updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'17\',\
+            updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'{risk_form.totalRiskValue}\',\
             activeSubmission = \'{json.dumps(riskJson)}\', historicalSubmission = \'{historical}\' WHERE tripNumber = \'{risk_form.tripNumber}\'"
             db.insert_record(updateRecordQuery)
             return {'data': 'trip number already exists'}
         else:
-            insertQuery = f'INSERT INTO risk(tripNumber, lastUpdated, flightInformation, totalRiskValue, activeSubmission) VALUES (\'{risk_form.tripNumber}\', curdate(), \'{json.dumps(flightInfo)}\', \'12\', \'{json.dumps(riskJson)}\')'
+            insertQuery = f'INSERT INTO risk(tripNumber, lastUpdated, flightInformation, totalRiskValue, activeSubmission) VALUES (\'{risk_form.tripNumber}\', curdate(), \'{json.dumps(flightInfo)}\', \'{risk_form.totalRiskValue}\', \'{json.dumps(riskJson)}\')'
             db.insert_record(insertQuery)
         
         return risk_form.data, HTTPStatus.CREATED

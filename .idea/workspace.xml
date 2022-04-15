@@ -23,12 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba1e512b-3d45-41be-8f6f-e1aa705c3904" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/test_unit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/The-Runtime-Terrors-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/The-Runtime-Terrors-API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiskForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiskForm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/create_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/create_html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/form.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,16 +106,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/RiskForm.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
