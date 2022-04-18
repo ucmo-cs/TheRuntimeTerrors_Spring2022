@@ -27,12 +27,14 @@ class RiskForm(Resource):
             updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'{risk_form.totalRiskValue}\',\
             activeSubmission = \'{json.dumps(riskJson)}\', historicalSubmission = \'{historical}\' WHERE tripNumber = \'{risk_form.tripNumber}\'"
             db.insert_record(updateRecordQuery)
-            return risk_form.totalRiskValue
+            #return risk_form.totalRiskValue
         else:
             insertQuery = f'INSERT INTO risk(tripNumber, lastUpdated, flightInformation, totalRiskValue, activeSubmission) VALUES (\'{risk_form.tripNumber}\', curdate(), \'{json.dumps(flightInfo)}\', \'{risk_form.totalRiskValue}\', \'{json.dumps(riskJson)}\')'
             db.insert_record(insertQuery)
-        
-        return risk_form.totalRiskValue, HTTPStatus.CREATED
+        myjson = jsonify({"risk value": risk_form.totalRiskValue})
+        headers = {'Content-Type': 'text/html'} 
+        return make_response(myjson, 201, headers)
+        # return risk_form.totalRiskValue, HTTPStatus.CREATED
     
     def delete(self):
         pass
