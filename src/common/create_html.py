@@ -91,6 +91,7 @@ class MakeJson:
         html = html + """
                     <input id="submitButton" type="submit">
                 </form>
+                <textarea id="myTextarea" name="something">This text gets removed</textarea>
         """
 
         # Finish HTML Document
@@ -119,7 +120,9 @@ class MakeJson:
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify(body)
-                            });
+                            })
+                            .then(response => response.json()) 
+                            .then(json => displayRiskValue(json));
                             const content = await rawResponse.json();
                             return content;
                         }catch(error){
@@ -135,6 +138,11 @@ class MakeJson:
                         const jsonFormData = buildJsonFormData(form);
                         const response = await performPostHttpRequest("http://127.0.0.1:5000/submit_risk_form", jsonFormData);
                         console.log(response);
+                    }
+                    
+                    function displayRiskValue(json) {
+                        console.log(json);
+                        document.getElementById('myTextarea').value = json['risk value'];
                     }
                 </script>
             </body>
