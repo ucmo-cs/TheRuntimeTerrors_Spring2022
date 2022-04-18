@@ -4,7 +4,7 @@ from mysql.connector import connect, Error
 import mysql.connector
 import sys
 
-
+#connect to the database
 class mySQL_Connector:
     def __init__(self):
         try:
@@ -24,11 +24,12 @@ class mySQL_Connector:
                 print(err)
                 exit()
     
+    #insert or update flight info
     def insert_record(self, query):
         self.cursor.execute(query)
         self.cnx.commit()
 
-
+    #check to see if flight already exists in database
     def check_record(self, tripNumber):
         query = f"Select tripNumber from risk where tripNumber = \'{tripNumber}\' LIMIT 1"
         self.cursor.execute(query)
@@ -41,14 +42,14 @@ class mySQL_Connector:
             print('error', file=sys.stdout)
             return False
 
-    
+    #query to get flight info
     def select_record(self, query):
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         result = result[0][0]
         return result
          
-
+    #close databse connection
     def close_connection(self):
         self.cnx.close()
         

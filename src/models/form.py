@@ -1,3 +1,4 @@
+#set flight attributes
 class Form():
     def __init__(self, request):
         self.flightDate = request['flightDate']
@@ -43,7 +44,7 @@ class Form():
         self.permit = request['permit']
         self.safetyItems = request['safetyItems']
         self.limitations = request['limitations']
-        # self.dont_apply = [self.flightDate, self.tripNumber, self.tailNumber, self.departure, self.destination]
+        #add up risk value
         self.totalRiskValue = (
                 int(self.captainLessThan200) +
                 int(self.officerLessThan200) +
@@ -85,6 +86,7 @@ class Form():
                 int(self.limitations)
         )
 
+    #create json for flight info
     @property
     def flightData(self):
         return {
@@ -95,6 +97,7 @@ class Form():
             "destination": self.destination
         }
 
+    #create json for inserting into the active submission 
     @property
     def data(self):
         return {

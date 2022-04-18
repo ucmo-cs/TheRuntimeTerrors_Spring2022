@@ -17,28 +17,32 @@ mkjson = MakeJson()
 class RiskForm(Resource):
     def post(self):
         print(request)
+        #Takes post request and make an instance of Form which formats data
         risk_form = Form(request.get_json())
-        
         riskJson = risk_form.data
         flightInfo = risk_form.flightData
+
+        #checks to see if flight already exists, if so then store
+        #new record to active submission and old record to historical submission
         if db.check_record(risk_form.tripNumber):
             historicalSubQuery = f"Select activeSubmission from risk where tripNumber = \'{risk_form.tripNumber}\'"
             historical = db.select_record(historicalSubQuery)
             updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'{risk_form.totalRiskValue}\',\
             activeSubmission = \'{json.dumps(riskJson)}\', historicalSubmission = \'{historical}\' WHERE tripNumber = \'{risk_form.tripNumber}\'"
             db.insert_record(updateRecordQuery)
-            #return risk_form.totalRiskValue
         else:
+            #if record is not in table then insert flight into table
             insertQuery = f'INSERT INTO risk(tripNumber, lastUpdated, flightInformation, totalRiskValue, activeSubmission) VALUES (\'{risk_form.tripNumber}\', curdate(), \'{json.dumps(flightInfo)}\', \'{risk_form.totalRiskValue}\', \'{json.dumps(riskJson)}\')'
             db.insert_record(insertQuery)
+        #return the total risk value
         myjson = jsonify({"risk value": risk_form.totalRiskValue})
         headers = {'Content-Type': 'text/html'} 
         return make_response(myjson, 201, headers)
-        # return risk_form.totalRiskValue, HTTPStatus.CREATED
     
     def delete(self):
         pass
 
+#To dislplay risk value form
 class ReturnHTML(Resource):
     def get(self):
         mkjson.make_json()
