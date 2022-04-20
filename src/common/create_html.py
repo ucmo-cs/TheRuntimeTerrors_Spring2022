@@ -18,11 +18,6 @@ class MakeJson:
                 <title>Flight Risk Assessment Tool</title>
             </head>
             <body>
-            <form>
-                <label for="deleteID">Delete ID:</label>
-                <input type="text" id="deleteID" name="deleteID"><br><br>
-                <input type="submit" value="Submit" onclick="deleteByID()">
-            </form>
         """
 
         # Create Form
@@ -32,17 +27,36 @@ class MakeJson:
 
         # Create Flight Information Fields
         html = html + """
-                    <h1>Flight Information</h1>
+                    <div class = "header"><h1>Flight Risk Assessment Tool</h1></div>
+                    <div class = "container">
         """
         # Create Input Box For Each Flight Information Field
+        count = 1
+        true = 1
+        true2 = 1
         for field in data['FlightInformation'].keys():
+            if count <= 3:
+                if true == 1:
+                    html = html + """
+                        <div class = "containerleft">
+                    """
+                    true = 0
+            if count > 3:
+                if true2 == 1:
+                    html = html + """
+                        </div><div class = "containerright">
+                    """
+                    true2 = 0
             html = html + """
-                    <label for='""" + field + """'>""" + field + """: </label><br>
-                    <input type="text" id='""" + field + """' name='""" + field + """'><br><br>
+                    <label for='""" + field + """'>""" + field + """ </label>
+                    <input type="text" id='""" + field + """' name='""" + field + """' placeholder='Enter """ + field + """'><br><br>
             """
+            count = count + 1
 
         html = html + """
-                    <h1>Pilot Qualifications and Experience</h1>
+                    </div></div>
+                    <button type="button" class="collapsible">Pilot Qualifications and Experience</button>
+                    <div class="content"><br>
         """
 
         for field in data['PilotQualificationsAndExperience']:
@@ -58,7 +72,12 @@ class MakeJson:
             """
 
         html = html + """
-                    <h1>Operating Environment</h1>
+                    </div>
+                <div class ="container"></div>
+    
+                <button type="button" class="collapsible">Operating Environment</button>
+                <div class="content">
+                <br>
         """
 
         for field in data['OperatingEnviroment']:
@@ -66,14 +85,20 @@ class MakeJson:
                     <label for='""" + field['name'] + """'>""" + field['descrip'] + """: </label>
                     <select id='""" + field['name'] + """' name='""" + field['name'] + """'>"""
             for x in range(field['maxVal']+1):
-                html = html + """<option value = '""" + str(x) + """'>""" + str(x) + """</option>"""
+                html = html + """
+                <option value = '""" + str(x) + """'>""" + str(x) + """</option>"""
 
             html = html + """
                     </select><br><br>
             """
 
         html = html + """
-                    <h1>Equipment</h1>
+                    </div>
+                    <div class ="container"></div>
+
+                    <button type="button" class="collapsible">Equipment</button>
+                    <div class="content">
+                    <br>
         """
 
         for field in data['Equipment']:
@@ -81,7 +106,8 @@ class MakeJson:
                     <label for='""" + field['name'] + """'>""" + field['descrip'] + """: </label>
                     <select id='""" + field['name'] + """' name='""" + field['name'] + """'>"""
             for x in range(field['maxVal']+1):
-                html = html + """<option value = '""" + str(x) + """'>""" + str(x) + """</option>"""
+                html = html + """
+                <option value = '""" + str(x) + """'>""" + str(x) + """</option>"""
 
             html = html + """
                     </select><br><br>
@@ -89,9 +115,15 @@ class MakeJson:
 
         # End Form
         html = html + """
-                    <input id="submitButton" type="submit">
+                    </div>
+                    <div class ="container"></div>
+        
+                    <br><br>
+            
+                    <div class = "submit-container">
+                    <input id="submitButton" type="submit" class = "submit">
+                    </div>
                 </form>
-                <textarea id="myTextarea" name="something">This text gets removed</textarea>
         """
 
         # Finish HTML Document
@@ -142,9 +174,154 @@ class MakeJson:
                     
                     function displayRiskValue(json) {
                         console.log(json);
+                        var x = document.createElement("P");
+                        var t = document.createTextNode("Total Risk Value: " + json['risk value']);
+                        x.appendChild(t);
+                        document.body.appendChild(x);
                         document.getElementById('myTextarea').value = json['risk value'];
                     }
+                    
+                    var coll = document.getElementsByClassName("collapsible");
+                    var i;
+                    
+                    for (i = 0; i < coll.length; i++) {
+                      coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "flex") {
+                          content.style.display = "none";
+                        } else {
+                          content.style.display = "flex";
+                        }
+                      });
+                    }
                 </script>
+                <style>
+                    html,
+                    body{
+                        margin: 0px;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+                    h1{
+                        color: whitesmoke;
+                    }
+                    .header{
+                        background-color: #32384e;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 55px;
+                    }
+                    .containerleft{
+                        display: inline;
+                        text-align: right;
+                        margin-bottom: 20px;
+                    }
+                    .containerright{
+                        text-align: right;
+                        width: 50%;
+                        margin-bottom: 20px;
+                    }
+                    .container{
+                        display: flex;
+                        margin-top: 20px;
+                        margin-left: 2.5%;
+                        width: 95%;
+                        justify-content: center;
+                        align-items: center;
+                        border-bottom-style: solid;
+                        border-bottom-color: rgb(226, 226, 226);
+                        border-bottom-width: 2px;
+                    }
+                    input{
+                        border-radius: 8px;
+                        height: 20px;
+                        padding: 5px;
+                        border-color: rgb(226, 226, 226);
+                        border-style: solid;
+                        width: 300px;
+                    }
+                    input:focus,
+                    select:focus{
+                        outline:none;
+                        border-color: #1e222f;
+                        border-width: 1px;
+                        box-shadow: .5px .5px 5px .5px rgb(51, 67, 110);
+                    }
+                    /* Style the button that is used to open and close the collapsible content */
+                    .collapsible {
+                        background-color: #eee;
+                        color: #444;
+                        cursor: pointer;
+                        padding: 18px;
+                        width: 95%;
+                        border: none;
+                        text-align: left;
+                        outline: none;
+                        font-size: 15px;
+                        margin-top: 20px;
+                        margin-left: 2.5%;
+                      }
+                      
+                      /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+                      .active, .collapsible:hover {
+                        background-color: #ccc;
+                      }
+                      
+                      /* Style the collapsible content. Note: hidden by default */
+                      .content {
+                        padding: 0 18px;
+                        overflow: hidden;
+                        display: none;
+                        background-color: #f1f1f1;
+                        width: 92.5%;
+                        margin-left: 2.5%;
+                        flex-wrap: wrap;
+                        align-content: center;
+                      }
+                      .collapsible:after {
+                        content: '+'; /* Unicode character for "plus" sign (+) */
+                        font-size: 13px;
+                        color: white;
+                        float: right;
+                        margin-left: 5px;
+                      }
+                      
+                      .active:after {
+                        content: "-"; /* Unicode character for "minus" sign (-) */
+                      }
+                      .submit-container{
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .submit{
+                        height: 50px;
+                        width: 150px;
+                        border-radius: 20px;
+                        background-color:#32384e;
+                        color: whitesmoke;
+                        border-width: 1px;
+                    }
+                    .submit:hover{
+                        background-color: #1e222f;
+                        color:whitesmoke;
+                    }
+                    select{
+                        border-radius: 8px;
+                        width:40px;
+                        height: 40px;
+                        text-align: center;
+                        margin: 5px 12px;
+                    }
+                    label{
+                        width: 375px;
+                        margin:15px 0px;
+                    }
+                    p{
+                        text-align: center;
+                    }
+                      
+                </style>
             </body>
         </html>
         """
