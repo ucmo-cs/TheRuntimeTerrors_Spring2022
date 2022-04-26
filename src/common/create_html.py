@@ -28,25 +28,15 @@ class MakeJson:
         # Create Flight Information Fields
         html = html + """
                     <div class = "header"><h1>Flight Risk Assessment Tool</h1></div>
-                    <div class = "container">
+                    <div class = "container"><div class="containerleft">
         """
         # Create Input Box For Each Flight Information Field
         count = 1
-        true = 1
-        true2 = 1
         for field in data['FlightInformation'].keys():
-            if count <= 3:
-                if true == 1:
-                    html = html + """
-                        <div class = "containerleft">
-                    """
-                    true = 0
-            if count > 3:
-                if true2 == 1:
-                    html = html + """
-                        </div><div class = "containerright">
-                    """
-                    true2 = 0
+            if count == 4:
+                html = html + """
+                    </div><div class = "containerright">
+                """
             html = html + """
                     <label for='""" + field + """'>""" + field + """ </label>
                     <input type="text" id='""" + field + """' name='""" + field + """' placeholder='Enter """ + field + """'><br><br>
