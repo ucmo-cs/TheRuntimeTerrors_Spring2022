@@ -27,7 +27,7 @@ class RiskForm(Resource):
         if db.check_record(risk_form.tripNumber):
             historicalSubQuery = f"Select activeSubmission from risk where tripNumber = \'{risk_form.tripNumber}\'"
             historical = db.select_record(historicalSubQuery)
-            updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), totalRiskValue = \'{risk_form.totalRiskValue}\',\
+            updateRecordQuery = f"UPDATE risk SET lastUpdated = curdate(), flightInformation = \'{json.dumps(flightInfo)}\', totalRiskValue = \'{risk_form.totalRiskValue}\',\
             activeSubmission = \'{json.dumps(riskJson)}\', historicalSubmission = \'{historical}\' WHERE tripNumber = \'{risk_form.tripNumber}\'"
             db.insert_record(updateRecordQuery)
         else:
