@@ -167,7 +167,6 @@ class MakeJson:
                         var x = document.createElement("P");
                         var t = document.createTextNode("Total Risk Value: " + json['risk value']);
                         var a = document.createElement("P");
-                        var b = document.createTextNode("Total Risk Value: " + json['risk value']);
                         if (json['risk value'] < 15) {
                             var b = document.createTextNode("Good");
                         }
