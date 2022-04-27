@@ -163,7 +163,11 @@ class MakeJson:
                     }
                     
                     function displayRiskValue(json) {
-                        console.log(json);
+                        var hs = document.head.getElementsByTagName('style');
+                        for (var i=0, max = hs.length; i < max; i++) {
+                            hs[i].parentNode.removeChild(hs[i]);
+                        }
+                        
                         var x = document.createElement("P");
                         var t = document.createTextNode("Total Risk Value: " + json['risk value']);
                         var a = document.createElement("P");
