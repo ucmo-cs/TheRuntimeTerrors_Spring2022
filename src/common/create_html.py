@@ -113,6 +113,7 @@ class MakeJson:
                     <div class = "submit-container">
                     <input id="submitButton" type="submit" class = "submit">
                     </div>
+                    <p id = "riskContainer"></p>
                 </form>
         """
 
@@ -163,30 +164,26 @@ class MakeJson:
                     }
                     
                     function displayRiskValue(json) {
+                        var paras = document.getElementById("riskContainer");                 
+                    
                         var hs = document.head.getElementsByTagName('style');
                         for (var i=0, max = hs.length; i < max; i++) {
                             hs[i].parentNode.removeChild(hs[i]);
                         }
                         
-                        var x = document.createElement("P");
-                        var t = document.createTextNode("Total Risk Value: " + json['risk value']);
-                        var a = document.createElement("P");
+                        paras.innerHTML = "Total Risk Value: " + json['risk value'] + "";
                         if (json['risk value'] < 15) {
-                            var b = document.createTextNode("Good");
-                            var styles = "p { color: green; }";
+                            paras.innerHTML += "<br>Good to fly";
+                            var styles = "#riskContainer  { color: green; }";
                         }
                         else if (json['risk value'] < 20) {
-                            var b = document.createTextNode("Ok");
-                            var styles = "p { color: yellow; }";
+                            paras.innerHTML += "<br>Exercise caution";
+                            var styles = "#riskContainer  { color: orange; }";
                         }
                         else {
-                            var b = document.createTextNode("Bad");
-                            var styles = "p { color: red; }";
+                            paras.innerHTML += "<br>Do not fly";
+                            var styles = "#riskContainer { color: red; }";
                         }
-                        x.appendChild(t);
-                        a.appendChild(b);
-                        document.body.appendChild(x);
-                        document.body.appendChild(a);
                                                 
                         var styleSheet = document.createElement("style");
                         styleSheet.innerText = styles;
