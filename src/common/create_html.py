@@ -179,7 +179,7 @@ class MakeJson:
                         x.appendChild(t);
                         a.appendChild(b);
                         document.body.appendChild(x);
-                        document.body.appendChild(b);
+                        document.body.appendChild(a);
                     }
                     
                     var coll = document.getElementsByClassName("collapsible");
