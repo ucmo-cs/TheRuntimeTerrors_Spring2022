@@ -32,14 +32,14 @@ class MakeJson:
         """
         # Create Input Box For Each Flight Information Field
         count = 1
-        for field in data['FlightInformation'].keys():
+        for field in data['FlightInformation']:
             if count == 4:
                 html = html + """
                     </div><div class = "containerright">
                 """
             html = html + """
-                    <label for='""" + field + """'>""" + field + """ </label>
-                    <input type="text" id='""" + field + """' name='""" + field + """' placeholder='Enter """ + field + """'><br><br>
+                    <label for='""" + field['name'] + """'>""" + field['descrip'] + """ </label>
+                    <input type="text" id='""" + field['name'] + """' name='""" + field['name'] + """' placeholder='Enter """ + field['descrip'] + """'><br><br>
             """
             count = count + 1
 

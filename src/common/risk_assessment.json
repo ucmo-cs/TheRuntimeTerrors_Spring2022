@@ -1,11 +1,26 @@
 {
-    "FlightInformation": {
-      "flightDate": "2022",
-      "tripNumber": 1,
-      "tailNumber": 1,
-      "departure": "Kansas City",
-      "destination": "Austin"
-    },
+    "FlightInformation": [
+        {
+          "name": "flightDate",
+          "descrip": "Flight Date"
+        },
+        {
+          "name": "tripNumber",
+          "descrip": "Trip Number"
+        },
+        {
+          "name": "tailNumber",
+          "descrip": "Tail Number"
+        },
+        {
+          "name": "departure",
+          "descrip": "Departure"
+        },
+        {
+          "name": "destination",
+          "descrip": "Destination"
+        }
+    ],
     "PilotQualificationsAndExperience": [
         {
         "name": "captainLessThan200",
