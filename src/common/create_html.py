@@ -169,17 +169,24 @@ class MakeJson:
                         var a = document.createElement("P");
                         if (json['risk value'] < 15) {
                             var b = document.createTextNode("Good");
+                            var styles = "p { color: green; }";
                         }
                         else if (json['risk value'] < 20) {
                             var b = document.createTextNode("Ok");
+                            var styles = "p { color: yellow; }";
                         }
                         else {
                             var b = document.createTextNode("Bad");
+                            var styles = "p { color: red; }";
                         }
                         x.appendChild(t);
                         a.appendChild(b);
                         document.body.appendChild(x);
                         document.body.appendChild(a);
+                                                
+                        var styleSheet = document.createElement("style");
+                        styleSheet.innerText = styles;
+                        document.head.appendChild(styleSheet);
                     }
                     
                     var coll = document.getElementsByClassName("collapsible");
