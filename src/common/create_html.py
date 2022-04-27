@@ -166,9 +166,21 @@ class MakeJson:
                         console.log(json);
                         var x = document.createElement("P");
                         var t = document.createTextNode("Total Risk Value: " + json['risk value']);
+                        var a = document.createElement("P");
+                        var b = document.createTextNode("Total Risk Value: " + json['risk value']);
+                        if (json['risk value'] < 15) {
+                            var b = document.createTextNode("Good");
+                        }
+                        else if (json['risk value'] < 20) {
+                            var b = document.createTextNode("Ok");
+                        }
+                        else {
+                            var b = document.createTextNode("Bad");
+                        }
                         x.appendChild(t);
+                        a.appendChild(b);
                         document.body.appendChild(x);
-                        document.getElementById('myTextarea').value = json['risk value'];
+                        document.body.appendChild(b);
                     }
                     
                     var coll = document.getElementsByClassName("collapsible");

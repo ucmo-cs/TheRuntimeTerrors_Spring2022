@@ -25,7 +25,6 @@
     <list default="true" id="ba1e512b-3d45-41be-8f6f-e1aa705c3904" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/create_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/create_html.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/dbconnector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/dbconnector.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
